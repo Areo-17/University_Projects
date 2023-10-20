@@ -1,0 +1,53 @@
+--Starting the query by selecting all the data table.
+select * from INE_DISTRITO_2020;
+
+-- Renaming all the rows that have accents with the "update" and "set" function, in order to be able to work with them.
+update INE_DISTRITO_2020
+set NOM_ENT = 'San Luis Potosi'
+where NOM_ENT like ('%San Luis%')
+update INE_DISTRITO_2020
+set NOM_ENT = 'Yucatan'
+where NOM_ENT like ('%Yuca%')
+update INE_DISTRITO_2020
+set NOM_ENT = 'Ciudad de Mexico'
+where NOM_ENT like ('%Ciudad de M%xico%')
+update INE_DISTRITO_2020
+set NOM_ENT = 'Michoacan'
+where NOM_ENT like ('%Mich%');
+update INE_DISTRITO_2020
+set NOM_ENT = 'Mexico'
+where NOM_ENT like ('%M%xico%')
+update INE_DISTRITO_2020
+set NOM_ENT = 'Nuevo Leon'
+where NOM_ENT like ('%Nuevo Le%')
+update INE_DISTRITO_2020
+set NOM_ENT = 'Queretaro'
+where NOM_ENT like ('%Quer%')
+
+--Updating the name of the row named "Concentración media" in the column "COMPLEJIDA" in order to perform the following steps in the data table.
+update INE_DISTRITO_2020
+set COMPLEJIDA = 'Concentración media'
+where COMPLEJIDA like ('%Concentraci%');
+
+--Using the function "alter table" to add more columns to the existing data table.
+ALTER TABLE dbo.INE_DISTRITO_2020
+ADD ALT_CON_1 INT, ALT_CON_2 INT, CON_MED INT, CON1 INT, CON2 INT, DIS1 INT, DIS2 INT, MDIS_1 INT, MDIS_2 INT;
+
+--Setting the rows of the new columns as "null".
+SELECT *FROM INE_DISTRITO_2020 ORDER BY COMPLEJIDA;
+SELECT DISTINCT  CONCAT('WHERE COMPLEJIDA = ''', COMPLEJIDA, ''';') FROM INE_DISTRITO_2020;
+
+--Setting all the null values to 0 with the "update" function and then the "set" function.
+update INE_DISTRITO_2020 
+set ALT_CON_1 = 0, ALT_CON_2 = 0,CON_MED = 0, CON1 = 0, CON2 = 0, DIS1 = 0, DIS2 = 0, MDIS_1 = 0, MDIS_2= 0;
+
+--Transforming the values to 1 with the function "conc" (concatenation). The function concatenate help us...
+UPDATE INE_DISTRITO_2020 SET ALT_CON_1 = 1 WHERE COMPLEJIDA = 'Altamente Concentrado 1'; UPDATE INE_DISTRITO_2020 SET ALT_CON_2 = 1 WHERE COMPLEJIDA = 'Altamente Concentrado 2';
+UPDATE INE_DISTRITO_2020 SET CON_MED = 1 WHERE COMPLEJIDA = 'Concentración Media'; UPDATE INE_DISTRITO_2020 SET CON1 = 1 WHERE COMPLEJIDA = 'Concentrado 1';
+UPDATE INE_DISTRITO_2020 SET CON2 = 1 WHERE COMPLEJIDA = 'Concentrado 2'; UPDATE INE_DISTRITO_2020 SET DIS1 = 1 WHERE COMPLEJIDA = 'Disperso 1';
+UPDATE INE_DISTRITO_2020 SET DIS2 = 1 WHERE COMPLEJIDA = 'Disperso 2'; UPDATE INE_DISTRITO_2020 SET MDIS_1 = 1 WHERE COMPLEJIDA = 'Muy Disperso 1'; 
+UPDATE INE_DISTRITO_2020 SET MDIS_2 = 1 WHERE COMPLEJIDA = 'Muy Disperso 2';
+
+--Showing the values in "COMPLEJIDA" just one time table
+SELECT DISTINCT COMPLEJIDA
+FROM INE_DISTRITO_2020;
