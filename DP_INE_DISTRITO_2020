@@ -13,7 +13,7 @@ set NOM_ENT = 'Ciudad de Mexico'
 where NOM_ENT like ('%Ciudad de M%xico%')
 update INE_DISTRITO_2020
 set NOM_ENT = 'Michoacan'
-where NOM_ENT like ('%Mich%');
+where NOM_ENT like ('%Mich%')
 update INE_DISTRITO_2020
 set NOM_ENT = 'Mexico'
 where NOM_ENT like ('%M%xico%')
@@ -42,12 +42,34 @@ update INE_DISTRITO_2020
 set ALT_CON_1 = 0, ALT_CON_2 = 0,CON_MED = 0, CON1 = 0, CON2 = 0, DIS1 = 0, DIS2 = 0, MDIS_1 = 0, MDIS_2= 0;
 
 --Transforming the values to 1 with the function "conc" (concatenation). The function concatenate help us...
-UPDATE INE_DISTRITO_2020 SET ALT_CON_1 = 1 WHERE COMPLEJIDA = 'Altamente Concentrado 1'; UPDATE INE_DISTRITO_2020 SET ALT_CON_2 = 1 WHERE COMPLEJIDA = 'Altamente Concentrado 2';
-UPDATE INE_DISTRITO_2020 SET CON_MED = 1 WHERE COMPLEJIDA = 'Concentración Media'; UPDATE INE_DISTRITO_2020 SET CON1 = 1 WHERE COMPLEJIDA = 'Concentrado 1';
-UPDATE INE_DISTRITO_2020 SET CON2 = 1 WHERE COMPLEJIDA = 'Concentrado 2'; UPDATE INE_DISTRITO_2020 SET DIS1 = 1 WHERE COMPLEJIDA = 'Disperso 1';
-UPDATE INE_DISTRITO_2020 SET DIS2 = 1 WHERE COMPLEJIDA = 'Disperso 2'; UPDATE INE_DISTRITO_2020 SET MDIS_1 = 1 WHERE COMPLEJIDA = 'Muy Disperso 1'; 
-UPDATE INE_DISTRITO_2020 SET MDIS_2 = 1 WHERE COMPLEJIDA = 'Muy Disperso 2';
+update INE_DISTRITO_2020 
+set ALT_CON_1 = 1 
+where COMPLEJIDA = 'Altamente Concentrado 1';
+update INE_DISTRITO_2020 
+set ALT_CON_2 = 1 
+where COMPLEJIDA = 'Altamente Concentrado 2';
+update INE_DISTRITO_2020 
+set CON_MED = 1 
+where COMPLEJIDA = 'Concentración Media'; 
+update INE_DISTRITO_2020 
+set CON1 = 1 
+where COMPLEJIDA = 'Concentrado 1';
+update INE_DISTRITO_2020 
+set CON2 = 1 
+where COMPLEJIDA = 'Concentrado 2'; 
+update INE_DISTRITO_2020 
+set DIS1 = 1 
+where COMPLEJIDA = 'Disperso 1';
+update INE_DISTRITO_2020 
+set DIS2 = 1 
+where COMPLEJIDA = 'Disperso 2'; 
+update INE_DISTRITO_2020 
+set MDIS_1 = 1 
+where COMPLEJIDA = 'Muy Disperso 1'; 
+update INE_DISTRITO_2020 
+set MDIS_2 = 1 
+where COMPLEJIDA = 'Muy Disperso 2';
 
 --Showing the values in "COMPLEJIDA" just one time table
-SELECT DISTINCT COMPLEJIDA
-FROM INE_DISTRITO_2020;
+select distinct COMPLEJIDA
+from INE_DISTRITO_2020;
